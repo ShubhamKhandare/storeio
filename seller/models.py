@@ -34,7 +34,6 @@ class Seller(AbstractBaseUser):
 
     objects = SellerManager()
     USERNAME_FIELD = 'mobile_number'
-    REQUIRED_FIELDS = ['mobile_number']
 
     class Meta:
         ordering = ['seller_id']
