@@ -1,0 +1,50 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="8">
+            <item index="0" class="java.lang.String" itemvalue="psycopg2-binary" />
+            <item index="1" class="java.lang.String" itemvalue="uwsgi" />
+            <item index="2" class="java.lang.String" itemvalue="eventlet" />
+            <item index="3" class="java.lang.String" itemvalue="gevent" />
+            <item index="4" class="java.lang.String" itemvalue="celery" />
+            <item index="5" class="java.lang.String" itemvalue="django-celery-results" />
+            <item index="6" class="java.lang.String" itemvalue="billiard" />
+            <item index="7" class="java.lang.String" itemvalue="status" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N802" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="application.models.Application.objects" />
+          <option value="entity.models.Account.objects" />
+          <option value="entity.models.Access.objects" />
+          <option value="logging.config" />
+          <option value="application.models.Application.DoesNotExist" />
+          <option value="application.models.Application.MultipleObjectsReturned" />
+          <option value="identity.models.IdentityWebPushSubscription.objects" />
+          <option value="identity.models.IdentityWebPushSubscription.DoesNotExist" />
+          <option value="certification.models.CertificationConfiguration.objects" />
+          <option value="indirect_provision.models.ProvisioningPlan.objects" />
+          <option value="workitem.models.WorkItem.objects" />
+          <option value="certification.models.CertificationWorkItem.objects" />
+          <option value="certification.models.CertificationConfiguration.DoesNotExist" />
+          <option value="certification.models.CertificationWorkItem.DoesNotExist" />
+          <option value="consumer_tasks.models.Tasks.DoesNotExist" />
+          <option value="identity.models.Identity.DoesNotExist" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
