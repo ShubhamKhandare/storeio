@@ -1,6 +1,3 @@
-import logging
-
-from django.conf import settings
 from rest_framework import serializers
 
 from seller.serializer.SellerSerializer import UserSerializer
@@ -15,16 +12,9 @@ class StoreListCreateSerializer(serializers.ModelSerializer):
         model = Store
         fields = '__all__'
 
-    def get_store_link(self, obj):
-        # This is store link getter
-        # TODO encode url properly
-        store_link = settings.DOMAIN_NAME + obj.store_name
-        logging.info(f"Created store link f{store_link}")
-        return store_link
-
-    def save(self, **kwargs):
+    def create(self, **kwargs):
         kwargs["seller"] = self.fields["seller"].get_default()
-        return super().save(**kwargs)
+        return super().create(**kwargs)
 
     def to_representation(self, instance):
         response = super().to_representation(instance)
