@@ -1,5 +1,4 @@
 from rest_framework.generics import ListAPIView
-from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 from seller.models import Seller
@@ -8,7 +7,7 @@ from seller.serializer import SellerSerializer, SellerTokenObtainPairSerializer
 
 class SellerAPIView(ListAPIView):
     # TODO add logging
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     queryset = Seller.objects.all()
     serializer_class = SellerSerializer.UserSerializer
 

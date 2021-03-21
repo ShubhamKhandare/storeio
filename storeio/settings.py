@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'seller'
+    'seller',
+    'store'
 ]
 
 MIDDLEWARE = [
@@ -132,8 +133,9 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
     # TODO check why was this necessary
     'USER_ID_FIELD': 'seller_id',
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=50),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
 
 AUTH_USER_MODEL = 'seller.Seller'
+DOMAIN_NAME = 'http://127.0.0.1:8000/'
