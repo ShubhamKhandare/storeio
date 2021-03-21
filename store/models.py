@@ -1,6 +1,5 @@
 import uuid
 
-from django.conf import settings
 from django.db import models
 
 from seller.models import Seller
@@ -12,11 +11,6 @@ class Store(models.Model):
     store_name = models.TextField(unique=True, max_length=90)
     store_address = models.TextField(max_length=255)
     store_link = models.TextField(max_length=255)
-
-    def create(self, request, *args, **kwargs):
-        store_link = settings.DOMAIN_NAME + str(self.store_id)
-        request.data.update({'store_link': store_link})
-        return super(Store, self).create(*args, **kwargs)  # Call the "real" save() method.
 
     def __str__(self):
         return f"Store: store_id:{self.store_id} store_name:{self.store_name}"
