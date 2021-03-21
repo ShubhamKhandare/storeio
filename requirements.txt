@@ -2,3 +2,4 @@ django
 djangorestframework
 djangorestframework-simplejwt
 urllib3
+Pillow

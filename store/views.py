@@ -1,8 +1,11 @@
 import urllib
 
 from django.conf import settings
+from django.db import IntegrityError
 from rest_framework import status
+from rest_framework.exceptions import APIException
 from rest_framework.generics import ListCreateAPIView, RetrieveAPIView, get_object_or_404
+from rest_framework.parsers import FileUploadParser
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
@@ -34,6 +37,7 @@ class StoreRetrieveView(RetrieveAPIView):
 class ProductListCreateView(ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = ProductListCreateSerializer
+    parser_class = (FileUploadParser,)
 
     def get_queryset(self):
         store_id = self.request.query_params.get('store_id')
@@ -45,11 +49,10 @@ class ProductListCreateView(ListCreateAPIView):
             # TODO check correct user adding product
             store_id = kwargs.get('store_id')
             store_obj = get_object_or_404(Store, store_id=store_id)
-            # try:
-            serializer.save(store=store_obj)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-            # except IntegrityError:
-            # content = {'product_name': ['product with this product name already exists']}
-            # return Response(content, status=status.HTTP_400_BAD_REQUEST)
+            try:
+                serializer.save(store=store_obj)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            except IntegrityError as exc:
+                raise APIException(exc)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

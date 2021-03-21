@@ -139,3 +139,7 @@ SIMPLE_JWT = {
 
 AUTH_USER_MODEL = 'seller.Seller'
 DOMAIN_NAME = 'http://127.0.0.1:8000/'
+
+# Storing images
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")

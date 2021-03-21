@@ -41,8 +41,8 @@ class Product(models.Model):
     # If category is not present in request or gets deleted this will be set to type misc
     product_category = models.ForeignKey(Category, related_name='products', on_delete=models.SET_DEFAULT,
                                          default='misc')
-
-    # product_image =
+    # TODO check for better library to handle images properly
+    product_image = models.ImageField(default='default.jpg')
 
     def __str__(self):
         return f"Product: product_id:{self.product_id} store_name:{self.store} name:{self.product_name}"
