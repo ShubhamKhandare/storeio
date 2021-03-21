@@ -2,11 +2,12 @@ import urllib
 
 from django.conf import settings
 from rest_framework import status
-from rest_framework.generics import ListCreateAPIView, RetrieveAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveAPIView, get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from store.models import Store
+from store.models import Store, Product
+from store.serializer.ProductSerializer import ProductListCreateSerializer
 from store.serializer.StoreSerializer import StoreListCreateSerializer
 
 
@@ -28,3 +29,27 @@ class StoreListCreateView(ListCreateAPIView):
 class StoreRetrieveView(RetrieveAPIView):
     queryset = Store.objects.all()
     serializer_class = StoreListCreateSerializer
+
+
+class ProductListCreateView(ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = ProductListCreateSerializer
+
+    def get_queryset(self):
+        store_id = self.request.query_params.get('store_id')
+        return Product.objects.filter(store=store_id)
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            # TODO check correct user adding product
+            store_id = kwargs.get('store_id')
+            store_obj = get_object_or_404(Store, store_id=store_id)
+            # try:
+            serializer.save(store=store_obj)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            # except IntegrityError:
+            # content = {'product_name': ['product with this product name already exists']}
+            # return Response(content, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
