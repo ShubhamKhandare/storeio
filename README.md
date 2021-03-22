@@ -70,13 +70,13 @@
 	- [x]  Respond back with the catelog, grouped by categories & sorted by number of products in the category.
 
 - [ ]  people (Un-authenticated users) can add items into their cart.
-	- [ ]  Maintain a cart on the server in either DB or redis or MongoDb    
-	- [ ]  On cart change (add / remove item) update the cart on server
+	- [x]  Maintain a cart on the server in either DB or redis or MongoDb    
+	- [x]  On cart change (add / remove item) update the cart on server
 	- [ ]  For cart line items take product id, qty, storeLink as input and fetch product meta data from the DB and save them.
   
 - [ ]  Customer place an order for a product. 
 	- [x]  Identity customer using JWT or token which can be generated using his mobile number and a OTP 
 	- [x]  Bypass the actual OTP validation flow and issue a token on any random number & OTP combination
 	- [x]  Create a customer record if didn’t already exist for that mobile number.
-	- [ ]  Take the cart object as input and convert that into an order.
+	- [x]  Take the cart object as input and convert that into an order.
 	- [x]  Create an order for that store & customer and return back the order id.
