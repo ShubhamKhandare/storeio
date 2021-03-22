@@ -26,9 +26,13 @@
     # Start the development server
     python manage.py runserver
     
-### API Doc
+### Postman API collection
     - Import postman collection JSON from `extra/` folder
     - Refer: https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-data-into-postman
+ 
+### Rough Database design
+    - Link: https://drive.google.com/file/d/1Ss8shX80w5rb9of1gFEJIBU4k8b0IZ45/view?usp=sharing
+    - Created with webapp app.diagrams.net 
    
 ### Detailed breakdown of the workflow -
 
