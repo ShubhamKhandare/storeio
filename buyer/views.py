@@ -1,11 +1,13 @@
 from django.db import IntegrityError
 from django.db.models import Count
 from rest_framework import status
-from rest_framework.exceptions import APIException
-from rest_framework.generics import CreateAPIView, ListAPIView, get_object_or_404
+from rest_framework.exceptions import APIException, PermissionDenied
+from rest_framework.generics import CreateAPIView, ListAPIView, get_object_or_404, RetrieveUpdateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
+from buyer.models import Cart
+from buyer.serializer.CartSerializer import CartCreateSerializer, CartRetrieveUpdateSerializer
 from buyer.serializer.CatalogSerializer import CatalogListSerializer, ProductByCategoryListSerializer
 from buyer.serializer.OrderSerializer import OrderCreateSerializer
 from store.models import Category, Product, Store
@@ -49,3 +51,38 @@ class ProductByCategoryListView(ListAPIView):
         category_type = self.kwargs.get('category_type')
         product_qs = Product.objects.filter(store=store_obj, product_category__type=category_type)
         return product_qs
+
+
+class CartCreateView(CreateAPIView):
+    serializer_class = CartCreateSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            try:
+                if request.user.is_authenticated:
+                    requested_buyer = request.user
+                    serializer.save(buyer=requested_buyer)
+                else:
+                    serializer.save(buyer=None)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            except IntegrityError as exc:
+                raise APIException(exc)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class CartRetrieveUpdateView(RetrieveUpdateAPIView):
+    serializer_class = CartRetrieveUpdateSerializer
+    lookup_field = 'cart_id'
+
+    def get_queryset(self):
+        queryset = Cart.objects.all()
+        return queryset
+
+    def perform_update(self, serializer):
+        instance = serializer.save()
+        buyer_obj = instance.buyer
+        if buyer_obj and buyer_obj != self.request.user:
+            # if Cart created by registered buyer then only buyer can update
+            raise PermissionDenied()
