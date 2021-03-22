@@ -5,13 +5,13 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.db import models
 
 
-class SellerManager(BaseUserManager):
+class UserManager(BaseUserManager):
     def create_user(self, mobile_number):
         """
         Creates seller with phone number
         """
         if not mobile_number:
-            raise ValueError('Seller must have a phone number')
+            raise ValueError('User must have a phone number')
 
         user = self.model(
             mobile_number=mobile_number
@@ -29,10 +29,11 @@ class Seller(AbstractBaseUser):
     seller_id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
     # TODO add phone number validations
     mobile_number = models.BigIntegerField(unique=True)
+    address = models.TextField(max_length=255, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    objects = SellerManager()
+    objects = UserManager()
     USERNAME_FIELD = 'mobile_number'
 
     class Meta:
