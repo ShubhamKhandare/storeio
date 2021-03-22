@@ -40,7 +40,7 @@ class ProductListCreateView(ListCreateAPIView):
     parser_class = (FileUploadParser,)
 
     def get_queryset(self):
-        store_id = self.request.query_params.get('store_id')
+        store_id = self.kwargs.get('store_id')
         return Product.objects.filter(store=store_id)
 
     def create(self, request, *args, **kwargs):

@@ -1,17 +1,18 @@
 import uuid as uuid
 
+from django.conf import settings
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser
 from django.db import models
 
 
-class SellerManager(BaseUserManager):
+class UserManager(BaseUserManager):
     def create_user(self, mobile_number):
         """
         Creates seller with phone number
         """
         if not mobile_number:
-            raise ValueError('Seller must have a phone number')
+            raise ValueError('User must have a phone number')
 
         user = self.model(
             mobile_number=mobile_number
@@ -24,16 +25,28 @@ class SellerManager(BaseUserManager):
         return user
 
 
+class User(AbstractBaseUser):
+    username = None
+    mobile_number = models.BigIntegerField(unique=True, primary_key=True)
+    USERNAME_FIELD = 'mobile_number'
+    REQUIRED_FIELDS = []
+    # Boolean fields to select the type of account.
+    is_seller = models.BooleanField(default=False)
+    is_buyer = models.BooleanField(default=False)
+    objects = UserManager()
+
+
 # Create your models here.
-class Seller(AbstractBaseUser):
+class Seller(models.Model):
+    seller_user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     seller_id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
     # TODO add phone number validations
-    mobile_number = models.BigIntegerField(unique=True)
+    # mobile_number = models.BigIntegerField(unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    objects = SellerManager()
-    USERNAME_FIELD = 'mobile_number'
+    # USERNAME_FIELD = 'mobile_number'
 
     class Meta:
         ordering = ['seller_id']

@@ -1,12 +1,11 @@
 from django.contrib.auth.models import update_last_login
+from rest_framework.settings import api_settings
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.settings import api_settings
 
 from seller.models import User
 
 
-class SellerAccessTokenSerializer(TokenObtainPairSerializer):
-
+class BuyerAccessTokenSerializer(TokenObtainPairSerializer):
     # Password was mandatory field so
     # https://stackoverflow.com/a/62851458/7840402
     def __init__(self, *args, **kwargs):

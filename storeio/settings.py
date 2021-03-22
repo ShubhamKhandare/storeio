@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'seller',
-    'store'
+    'store',
+    'buyer'
 ]
 
 MIDDLEWARE = [
@@ -132,12 +133,12 @@ REST_FRAMEWORK = {
 
 SIMPLE_JWT = {
     # TODO check why was this necessary
-    'USER_ID_FIELD': 'seller_id',
+    'USER_ID_FIELD': 'mobile_number',
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=50),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
 
-AUTH_USER_MODEL = 'seller.Seller'
+AUTH_USER_MODEL = 'seller.User'
 DOMAIN_NAME = 'http://127.0.0.1:8000/'
 
 # Storing images
