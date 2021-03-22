@@ -19,9 +19,8 @@ class Order(models.Model):
         choices=OrderType.choices,
         default=OrderType.SUBMITTED,
     )
-    product = models.ForeignKey(Product, related_name='orders', on_delete=models.CASCADE)
+    product = models.ManyToManyField(Product)
     buyer = models.ForeignKey(Seller, related_name='orders', on_delete=models.CASCADE, )
-    quantity = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -30,7 +29,6 @@ class Order(models.Model):
 
     class Meta:
         ordering = ['-updated_at']
-        unique_together = ('product', 'buyer')
 
 
 class Cart(models.Model):

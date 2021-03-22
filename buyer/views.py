@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from buyer.models import Cart
 from buyer.serializer.CartSerializer import CartCreateSerializer, CartRetrieveUpdateSerializer
 from buyer.serializer.CatalogSerializer import CatalogListSerializer, ProductByCategoryListSerializer
-from buyer.serializer.OrderSerializer import OrderCreateSerializer
+from buyer.serializer.OrderSerializer import OrderCreateSerializer, CartToOrderCreateSerializer
 from store.models import Category, Product, Store
 
 
@@ -86,3 +86,27 @@ class CartRetrieveUpdateView(RetrieveUpdateAPIView):
         if buyer_obj and buyer_obj != self.request.user:
             # if Cart created by registered buyer then only buyer can update
             raise PermissionDenied()
+
+
+class CartToOrderCreateView(CreateAPIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = CartToOrderCreateSerializer
+
+    def create(self, request, *args, **kwargs):
+        cart_id = kwargs.get('cart_id')
+        cart_obj = get_object_or_404(Cart, cart_id=cart_id)
+        cart_dict = CartCreateSerializer(cart_obj).data
+        request_data = request.data
+        request_data.update(cart_dict)
+        serializer = self.serializer_class(data=request_data)
+        if serializer.is_valid():
+            try:
+                requested_buyer = request.user
+                serializer.save(buyer=requested_buyer)
+                # Deleting cart as cart is successfully converted to order
+                cart_obj.delete()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            except IntegrityError as exc:
+                raise APIException(exc)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
