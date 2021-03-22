@@ -2,7 +2,7 @@ from django.contrib.auth.models import update_last_login
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.settings import api_settings
 
-from seller.models import User
+from seller.models import Seller
 
 
 class SellerAccessTokenSerializer(TokenObtainPairSerializer):
@@ -30,17 +30,17 @@ class SellerAccessTokenSerializer(TokenObtainPairSerializer):
         if str(mobile_number).find(str(otp)) == -1:
             return {'status': 'failed', 'message': 'Please input correct OTP.'}
         else:
-            user_obj = None
+            seller_obj = None
             try:
-                user_obj = User.objects.get(mobile_number=mobile_number)
-            except User.DoesNotExist:
+                seller_obj = Seller.objects.get(mobile_number=mobile_number)
+            except Seller.DoesNotExist:
                 # Creating seller if does not exists
                 # This logic could be added to sending OTP API but
                 # Lets not create user unless he actually tries to login
-                user_obj = User.objects.create_user(mobile_number=mobile_number)
+                seller_obj = Seller.objects.create_user(mobile_number=mobile_number)
                 # TODO handle seller creation failure cases
 
-            self.user = user_obj
+            self.user = seller_obj
 
             refresh = self.get_token(self.user)
 

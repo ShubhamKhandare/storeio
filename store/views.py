@@ -17,7 +17,11 @@ from store.serializer.StoreSerializer import StoreListCreateSerializer
 class StoreListCreateView(ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = StoreListCreateSerializer
-    queryset = Store.objects.all()
+
+    def get_queryset(self):
+        # Only list objects where you are
+        queryset = Store.objects.filter(seller=self.request.user)
+        return queryset
 
     def create(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)

@@ -132,12 +132,12 @@ REST_FRAMEWORK = {
 
 SIMPLE_JWT = {
     # TODO check why was this necessary
-    'USER_ID_FIELD': 'mobile_number',
+    'USER_ID_FIELD': 'seller_id',
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=50),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
 
-AUTH_USER_MODEL = 'seller.User'
+AUTH_USER_MODEL = 'seller.Seller'
 DOMAIN_NAME = 'http://127.0.0.1:8000/'
 
 # Storing images
