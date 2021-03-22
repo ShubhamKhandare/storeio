@@ -3,14 +3,17 @@ import urllib
 from django.conf import settings
 from django.db import IntegrityError
 from rest_framework import status
-from rest_framework.exceptions import APIException
-from rest_framework.generics import ListCreateAPIView, RetrieveAPIView, get_object_or_404
+from rest_framework.exceptions import APIException, PermissionDenied
+from rest_framework.generics import ListCreateAPIView, RetrieveAPIView, get_object_or_404, ListAPIView, \
+    RetrieveUpdateAPIView
 from rest_framework.parsers import FileUploadParser
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
+from buyer.models import Order
 from store.models import Store, Product
 from store.serializer.ProductSerializer import ProductListCreateSerializer
+from store.serializer.StoreOrderSerializer import StoreOrderListSerializer, StoreOrderUpdateSerializer
 from store.serializer.StoreSerializer import StoreListCreateSerializer
 
 
@@ -63,3 +66,30 @@ class ProductListCreateView(ListCreateAPIView):
                 raise APIException(exc)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class StoreOrderListView(ListAPIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = StoreOrderListSerializer
+
+    def get_queryset(self):
+        store_id = self.kwargs.get('store_id')
+        store_obj = get_object_or_404(Store, store_id=store_id)
+        if store_obj.seller != self.request.user:
+            # Only Store owner can see the orders
+            raise PermissionDenied()
+        return Order.objects.filter(product__store=store_obj)
+
+
+class StoreOrderGetUpdateView(RetrieveUpdateAPIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = StoreOrderUpdateSerializer
+    lookup_field = 'order_id'
+
+    def get_queryset(self):
+        store_id = self.kwargs.get('store_id')
+        store_obj = get_object_or_404(Store, store_id=store_id)
+        if store_obj.seller != self.request.user:
+            # Only Store owner can see the orders
+            raise PermissionDenied()
+        return Order.objects.filter(product__store=store_obj)
