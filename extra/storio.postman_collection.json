@@ -1,0 +1,554 @@
+{
+	"info": {
+		"_postman_id": "3162a0bb-b3ed-4c62-9926-b8ccfb43435b",
+		"name": "storio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Seller: Get all seller",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2Mzk3MDU4LCJqdGkiOiIxNjBmOTMyNjMwM2E0OWQ4YjMzMWRkMDA5NWU2YzBlMCIsInVzZXJfaWQiOiI2NzZiN2EyNi1hMjRmLTQzODEtYTA2NS0wYTQxOTRjMDMwMjIifQ.OPTb6oVgcet6dc1_GRtysPyY1xp8x6n6csGd2QkBW_g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mobile_number\": \"9975008756\",\r\n    \"otp\": \"9975\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/seller",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"seller"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Seller: Refresh token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYxNjM1OTY4NSwianRpIjoiMWU1YjkyOTUwZjU2NDA5YTlkZDQzMWRjYjAzNjhmNjYiLCJ1c2VyX2lkIjoiZDA3ZWQ0ZGEtMzczNC00Yzc0LTg1MzgtYzFhM2JiNzRjNzA0In0.JVlNa2nLWApKCtPkFw0Z-8oW0xTXEK5cLd-z11nxc4g\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/seller/api/token/refresh",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"seller",
+						"api",
+						"token",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Seller: Login Get access and refresh token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mobile_number\": \"9850071073\",\r\n    \"otp\": \"9850\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/seller/api/token",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"seller",
+						"api",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product: Create product for Stores",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2Mzk3MDU4LCJqdGkiOiIxNjBmOTMyNjMwM2E0OWQ4YjMzMWRkMDA5NWU2YzBlMCIsInVzZXJfaWQiOiI2NzZiN2EyNi1hMjRmLTQzODEtYTA2NS0wYTQxOTRjMDMwMjIifQ.OPTb6oVgcet6dc1_GRtysPyY1xp8x6n6csGd2QkBW_g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "product_image",
+							"type": "file",
+							"src": "/C:/Users/GS-2179/Pictures/memes/3u4jfe.jpg"
+						},
+						{
+							"key": "product_name",
+							"value": "sk_soft2",
+							"type": "text"
+						},
+						{
+							"key": "product_description",
+							"value": "lol",
+							"type": "text"
+						},
+						{
+							"key": "product_mrp",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "product_sale_price",
+							"value": "110",
+							"type": "text"
+						},
+						{
+							"key": "product_category.type",
+							"value": "os",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/store/58475293-5cbf-4cff-9539-c68af0fc68b0/product",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"store",
+						"58475293-5cbf-4cff-9539-c68af0fc68b0",
+						"product"
+					]
+				},
+				"description": "Create product with category.\r\nCategory gets created if not exists\r\nLocal Image storage"
+			},
+			"response": []
+		},
+		{
+			"name": "Buyer: Login Get access and refresh token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mobile_number\": \"88888888\",\r\n    \"otp\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/seller/api/token",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"seller",
+						"api",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product: Get  all store products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2NDAzMjc0LCJqdGkiOiI3YmMyNTFmN2Q0OWM0MDQxOGQ3YzI4MzE4Y2M0YWNkMCIsInVzZXJfaWQiOiJiNDY3MGNmMS0wMDA1LTQyY2EtYjJmMy1hNTEzMTM3ZmJhYWQifQ.PgB_gRmDXWh966X6yO-mghfi4zAMQe3-PAKGw5XKfdQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"store_name\": \"sk_soft\",\r\n    \"store_address\": \"Golibar Maidan, Satara\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/store/58475293-5cbf-4cff-9539-c68af0fc68b0/product",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"store",
+						"58475293-5cbf-4cff-9539-c68af0fc68b0",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Store: Get all my stores",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2NDEyNTMxLCJqdGkiOiIxMTcwOTQ0NjIwZWM0MTM2YjUwNGZjNWZiMGNjNDhjZCIsInVzZXJfaWQiOiJiNDY3MGNmMS0wMDA1LTQyY2EtYjJmMy1hNTEzMTM3ZmJhYWQifQ.demyjcBxGSOpDkW4IdTIvhokrEDknsC6KcLgERNwi7Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/store",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"store"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Store: Create my store",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2Mzk3MDU4LCJqdGkiOiIxNjBmOTMyNjMwM2E0OWQ4YjMzMWRkMDA5NWU2YzBlMCIsInVzZXJfaWQiOiI2NzZiN2EyNi1hMjRmLTQzODEtYTA2NS0wYTQxOTRjMDMwMjIifQ.OPTb6oVgcet6dc1_GRtysPyY1xp8x6n6csGd2QkBW_g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"store_name\": \"sk_soft\",\r\n    \"store_address\": \"Golibar Maidan, Satara\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/store/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"store",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Store: Get store details by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2Mzk3MDU4LCJqdGkiOiIxNjBmOTMyNjMwM2E0OWQ4YjMzMWRkMDA5NWU2YzBlMCIsInVzZXJfaWQiOiI2NzZiN2EyNi1hMjRmLTQzODEtYTA2NS0wYTQxOTRjMDMwMjIifQ.OPTb6oVgcet6dc1_GRtysPyY1xp8x6n6csGd2QkBW_g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/store/58475293-5cbf-4cff-9539-c68af0fc68b0",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"store",
+						"58475293-5cbf-4cff-9539-c68af0fc68b0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buyer: Store category catalog",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/buyer/store/bfda84ab-d0b4-47b0-a16e-cf87db2d74f8/catalog",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"buyer",
+						"store",
+						"bfda84ab-d0b4-47b0-a16e-cf87db2d74f8",
+						"catalog"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buyer: List store products by category type",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/buyer/store/58475293-5cbf-4cff-9539-c68af0fc68b0/hardware",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"buyer",
+						"store",
+						"58475293-5cbf-4cff-9539-c68af0fc68b0",
+						"hardware"
+					]
+				},
+				"description": "Get category type from catalog API"
+			},
+			"response": []
+		},
+		{
+			"name": "Order Get Order of Store",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2NDIxMjk1LCJqdGkiOiJkMWUxNjBkMjljMTI0OTU5OWFkOWIyZjdjZWM0MmFjYyIsInVzZXJfaWQiOiJiNDY3MGNmMS0wMDA1LTQyY2EtYjJmMy1hNTEzMTM3ZmJhYWQifQ.SFfUviomYZ2Lv0EFI9c6xRa86EiblA9DsyzHBE7h88U",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/store/bfda84ab-d0b4-47b0-a16e-cf87db2d74f8/order",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"store",
+						"bfda84ab-d0b4-47b0-a16e-cf87db2d74f8",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order: Create order if buyer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2NDIxMjk1LCJqdGkiOiJkMWUxNjBkMjljMTI0OTU5OWFkOWIyZjdjZWM0MmFjYyIsInVzZXJfaWQiOiJiNDY3MGNmMS0wMDA1LTQyY2EtYjJmMy1hNTEzMTM3ZmJhYWQifQ.SFfUviomYZ2Lv0EFI9c6xRa86EiblA9DsyzHBE7h88U",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"product\": \"246310b6-9fd8-4700-a631-2f2db421b709\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/buyer/order/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"buyer",
+						"order",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order: Update order if seller",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2NDI0Mzk3LCJqdGkiOiI5NzY3ZTZlYzQzZmQ0YmE2OTY4YmVjNWVlYmM3MzJhYyIsInVzZXJfaWQiOiJiNDY3MGNmMS0wMDA1LTQyY2EtYjJmMy1hNTEzMTM3ZmJhYWQifQ.cmWMDfFdKl0kf6E4Fbf1c0ziXo3DvO46xVMZVuPmdVQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"Accepted\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/store/bfda84ab-d0b4-47b0-a16e-cf87db2d74f8/order/6e1c19e5-add8-4259-99ad-39ca6ecdb8b5",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"store",
+						"bfda84ab-d0b4-47b0-a16e-cf87db2d74f8",
+						"order",
+						"6e1c19e5-add8-4259-99ad-39ca6ecdb8b5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

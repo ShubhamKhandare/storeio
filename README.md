@@ -1,3 +1,35 @@
+### Running on development machine
+
+    # Clone repository
+    git@github.com:ShubhamKhandare/storeio.git
+     OR
+    https://github.com/ShubhamKhandare/storeio.git
+    
+    # Change into project directory
+    cd storeio
+    
+    # Make virtual environment [Optional]
+    mkvirtualenv <project_name>
+    
+    # Activate virtual environment [Optional]
+    workon <project_name>
+    
+    # Install requirements
+    pip install -r requirements.txt
+    
+    # Check migrations
+    python manage.py makemigrations
+    
+    # Run migrations
+    python manage.py migrate
+    
+    # Start the development server
+    python manage.py runserver
+    
+### API Doc
+    - Import postman collection JSON from `extra/` folder
+    - Refer: https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-data-into-postman
+   
 ### Detailed breakdown of the workflow -
 
  ### endpoints for seller side. (Words in Bold indicates table names)
