@@ -29,6 +29,7 @@ class Seller(AbstractBaseUser):
     seller_id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
     # TODO add phone number validations
     mobile_number = models.BigIntegerField(unique=True)
+    address = models.TextField(max_length=255, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

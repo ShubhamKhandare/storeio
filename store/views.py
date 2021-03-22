@@ -27,8 +27,11 @@ class StoreListCreateView(ListCreateAPIView):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             store_link = settings.DOMAIN_NAME + urllib.parse.quote_plus(str(serializer.validated_data['store_name']))
-            serializer.save(seller=request.user, store_link=store_link)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            try:
+                serializer.save(seller=request.user, store_link=store_link)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            except IntegrityError as exc:
+                raise APIException(exc)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
