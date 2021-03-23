@@ -38,7 +38,7 @@
 
  ### endpoints for seller side. (Words in Bold indicates table names)
  
-- []  seller signs up using his mobile number that creates an **account**
+- [x]  seller signs up using his mobile number that creates an **account**
 	- [x]  Take mobile number & OTP (random) as input to the API
 	- [x]  Create customer account in accounts table.
 	- [x]  Issue a token.  
@@ -65,20 +65,20 @@
 ### Endpoints for Buyer side
 
  
-- [ ]  Seller shares his store link with his customers. To get basic store details
-	- [ ]  Take store link as input    
+- [x]  Seller shares his store link with his customers. To get basic store details
+	- [x]  Take store link as input    
 	- [x]  Respond back with storeId, store name, address
 
-- [ ]  To get product catalog & categories
-	- [ ]  Take store link as input    
+- [x]  To get product catalog & categories
+	- [x]  Take store link as input    
 	- [x]  Respond back with the catalog, grouped by categories & sorted by number of products in the category.
 
-- [ ]  people (Un-authenticated users) can add items into their cart.
+- [x]  people (Un-authenticated users) can add items into their cart.
 	- [x]  Maintain a cart on the server in either DB or redis or MongoDb    
 	- [x]  On cart change (add / remove item) update the cart on server
-	- [ ]  For cart line items take product id, qty, storeLink as input and fetch product meta data from the DB and save them.
+	- [x]  For cart line items take product id, qty, storeLink as input and fetch product meta data from the DB and save them.
   
-- [ ]  Customer place an order for a product. 
+- [x]  Customer place an order for a product. 
 	- [x]  Identity customer using JWT or token which can be generated using his mobile number and a OTP 
 	- [x]  Bypass the actual OTP validation flow and issue a token on any random number & OTP combination
 	- [x]  Create a customer record if didn't already exist for that mobile number.
