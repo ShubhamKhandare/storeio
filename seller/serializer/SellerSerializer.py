@@ -7,3 +7,9 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = Seller
         fields = ['seller_id', 'mobile_number']
+
+
+class UserUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Seller
+        exclude = ('password',)
