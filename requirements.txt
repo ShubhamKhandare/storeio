@@ -4,3 +4,4 @@ djangorestframework-simplejwt
 urllib3
 Pillow
 django-filter
+psycopg2
