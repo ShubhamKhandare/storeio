@@ -15,6 +15,7 @@ from store.models import Store, Product
 from store.serializer.ProductSerializer import ProductListCreateSerializer
 from store.serializer.StoreOrderSerializer import StoreOrderListSerializer, StoreOrderUpdateSerializer
 from store.serializer.StoreSerializer import StoreListCreateSerializer
+from store.utility import OrderListFilter
 
 
 class StoreListCreateView(ListCreateAPIView):
@@ -81,6 +82,7 @@ class ProductListCreateView(ListCreateAPIView):
 class StoreOrderListView(ListAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = StoreOrderListSerializer
+    filterset_class = OrderListFilter
 
     def get_queryset(self):
         store_id = self.kwargs.get('store_id')

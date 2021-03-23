@@ -45,7 +45,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYxNjM1OTY4NSwianRpIjoiMWU1YjkyOTUwZjU2NDA5YTlkZDQzMWRjYjAzNjhmNjYiLCJ1c2VyX2lkIjoiZDA3ZWQ0ZGEtMzczNC00Yzc0LTg1MzgtYzFhM2JiNzRjNzA0In0.JVlNa2nLWApKCtPkFw0Z-8oW0xTXEK5cLd-z11nxc4g\"\r\n}",
+					"raw": "{\r\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYxNjU2NTEzNiwianRpIjoiZmI2NWI1NzlkZDhkNDBkN2I0ZTdmNTNhNzIyOGJjZDQiLCJ1c2VyX2lkIjoiMTNjOTEzMjktMTM4Zi00OGFmLTg0MDQtYTM5MTRiOTM3YTlkIn0.xeASCF9Vly7L5xP1Q6CFs_vC0AtEyf_UP1clSdmvkuA\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -83,7 +83,12 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2Mzk3MDU4LCJqdGkiOiIxNjBmOTMyNjMwM2E0OWQ4YjMzMWRkMDA5NWU2YzBlMCIsInVzZXJfaWQiOiI2NzZiN2EyNi1hMjRmLTQzODEtYTA2NS0wYTQxOTRjMDMwMjIifQ.OPTb6oVgcet6dc1_GRtysPyY1xp8x6n6csGd2QkBW_g",
+							"value": "{{user_token}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{user_token}}",
 							"type": "string"
 						}
 					]
@@ -130,7 +135,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2NDEyNTMxLCJqdGkiOiIxMTcwOTQ0NjIwZWM0MTM2YjUwNGZjNWZiMGNjNDhjZCIsInVzZXJfaWQiOiJiNDY3MGNmMS0wMDA1LTQyY2EtYjJmMy1hNTEzMTM3ZmJhYWQifQ.demyjcBxGSOpDkW4IdTIvhokrEDknsC6KcLgERNwi7Q",
+							"value": "{{user_token}}",
 							"type": "string"
 						}
 					]
@@ -162,7 +167,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2Mzk3MDU4LCJqdGkiOiIxNjBmOTMyNjMwM2E0OWQ4YjMzMWRkMDA5NWU2YzBlMCIsInVzZXJfaWQiOiI2NzZiN2EyNi1hMjRmLTQzODEtYTA2NS0wYTQxOTRjMDMwMjIifQ.OPTb6oVgcet6dc1_GRtysPyY1xp8x6n6csGd2QkBW_g",
+							"value": "{{user_token}}",
 							"type": "string"
 						}
 					]
@@ -197,14 +202,14 @@
 			"response": []
 		},
 		{
-			"name": "Store: Get store details by id",
+			"name": "Store: Get store details by visiting store link",
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2Mzk3MDU4LCJqdGkiOiIxNjBmOTMyNjMwM2E0OWQ4YjMzMWRkMDA5NWU2YzBlMCIsInVzZXJfaWQiOiI2NzZiN2EyNi1hMjRmLTQzODEtYTA2NS0wYTQxOTRjMDMwMjIifQ.OPTb6oVgcet6dc1_GRtysPyY1xp8x6n6csGd2QkBW_g",
+							"value": "{{user_token}}",
 							"type": "string"
 						}
 					]
@@ -212,7 +217,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/store/58475293-5cbf-4cff-9539-c68af0fc68b0",
+					"raw": "http://127.0.0.1:8000/store/sk_soft",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -223,7 +228,7 @@
 					"port": "8000",
 					"path": [
 						"store",
-						"58475293-5cbf-4cff-9539-c68af0fc68b0"
+						"sk_soft"
 					]
 				}
 			},
@@ -237,7 +242,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2Mzk3MDU4LCJqdGkiOiIxNjBmOTMyNjMwM2E0OWQ4YjMzMWRkMDA5NWU2YzBlMCIsInVzZXJfaWQiOiI2NzZiN2EyNi1hMjRmLTQzODEtYTA2NS0wYTQxOTRjMDMwMjIifQ.OPTb6oVgcet6dc1_GRtysPyY1xp8x6n6csGd2QkBW_g",
+							"value": "{{user_token}}",
 							"type": "string"
 						}
 					]
@@ -310,7 +315,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2NDAzMjc0LCJqdGkiOiI3YmMyNTFmN2Q0OWM0MDQxOGQ3YzI4MzE4Y2M0YWNkMCIsInVzZXJfaWQiOiJiNDY3MGNmMS0wMDA1LTQyY2EtYjJmMy1hNTEzMTM3ZmJhYWQifQ.PgB_gRmDXWh966X6yO-mghfi4zAMQe3-PAKGw5XKfdQ",
+							"value": "{{user_token}}",
 							"type": "string"
 						}
 					]
@@ -430,14 +435,14 @@
 			"response": []
 		},
 		{
-			"name": "Order Get Order of Store",
+			"name": "Order: Get Order of Store",
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2NDIxMjk1LCJqdGkiOiJkMWUxNjBkMjljMTI0OTU5OWFkOWIyZjdjZWM0MmFjYyIsInVzZXJfaWQiOiJiNDY3MGNmMS0wMDA1LTQyY2EtYjJmMy1hNTEzMTM3ZmJhYWQifQ.SFfUviomYZ2Lv0EFI9c6xRa86EiblA9DsyzHBE7h88U",
+							"value": "{{user_token}}",
 							"type": "string"
 						}
 					]
@@ -445,7 +450,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/store/bfda84ab-d0b4-47b0-a16e-cf87db2d74f8/order",
+					"raw": "http://127.0.0.1:8000/store/a2265cbf-c709-4b6b-9e82-8a8c9d0bc7d5/order?status=Accepted",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -456,8 +461,14 @@
 					"port": "8000",
 					"path": [
 						"store",
-						"bfda84ab-d0b4-47b0-a16e-cf87db2d74f8",
+						"a2265cbf-c709-4b6b-9e82-8a8c9d0bc7d5",
 						"order"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "Accepted"
+						}
 					]
 				}
 			},
@@ -471,7 +482,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2NDIxMjk1LCJqdGkiOiJkMWUxNjBkMjljMTI0OTU5OWFkOWIyZjdjZWM0MmFjYyIsInVzZXJfaWQiOiJiNDY3MGNmMS0wMDA1LTQyY2EtYjJmMy1hNTEzMTM3ZmJhYWQifQ.SFfUviomYZ2Lv0EFI9c6xRa86EiblA9DsyzHBE7h88U",
+							"value": "{{user_token}}",
 							"type": "string"
 						}
 					]
@@ -480,7 +491,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"product\": \"246310b6-9fd8-4700-a631-2f2db421b709\"\r\n}",
+					"raw": "{\r\n    \"product\": [\"87083907-3319-464f-9ad8-2bae955e43b1\"]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -507,14 +518,14 @@
 			"response": []
 		},
 		{
-			"name": "Order: Update order if seller",
+			"name": "Order: Update order if seller (Accept order)",
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2NDI0Mzk3LCJqdGkiOiI5NzY3ZTZlYzQzZmQ0YmE2OTY4YmVjNWVlYmM3MzJhYyIsInVzZXJfaWQiOiJiNDY3MGNmMS0wMDA1LTQyY2EtYjJmMy1hNTEzMTM3ZmJhYWQifQ.cmWMDfFdKl0kf6E4Fbf1c0ziXo3DvO46xVMZVuPmdVQ",
+							"value": "{{user_token}}",
 							"type": "string"
 						}
 					]
@@ -531,7 +542,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/store/bfda84ab-d0b4-47b0-a16e-cf87db2d74f8/order/6e1c19e5-add8-4259-99ad-39ca6ecdb8b5",
+					"raw": "http://127.0.0.1:8000/store/4fbc0881-001b-4243-93b1-fdcd558345e7/order/17fcc987-0af2-4900-92c7-3afbaa95c1bb",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -542,9 +553,9 @@
 					"port": "8000",
 					"path": [
 						"store",
-						"bfda84ab-d0b4-47b0-a16e-cf87db2d74f8",
+						"4fbc0881-001b-4243-93b1-fdcd558345e7",
 						"order",
-						"6e1c19e5-add8-4259-99ad-39ca6ecdb8b5"
+						"17fcc987-0af2-4900-92c7-3afbaa95c1bb"
 					]
 				}
 			},
@@ -558,7 +569,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2NDM4MjQzLCJqdGkiOiIwN2ExMmM1Mjc1NGM0MDhhYTQyNGY1NjZiNWI3NmJhNSIsInVzZXJfaWQiOiJiNDY3MGNmMS0wMDA1LTQyY2EtYjJmMy1hNTEzMTM3ZmJhYWQifQ.of4PJuz2flh8oZMERyMNJCNFX73gQ8REY6vlLLI7YNk",
+							"value": "{{user_token}}",
 							"type": "string"
 						}
 					]
@@ -567,7 +578,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"product\": [\"1388b2b6-8567-4ea1-9301-8e4e07319caf\"]\r\n}",
+					"raw": "{\r\n    \"product\": [\"87083907-3319-464f-9ad8-2bae955e43b1\"]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -601,7 +612,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2NDM4MjQzLCJqdGkiOiIwN2ExMmM1Mjc1NGM0MDhhYTQyNGY1NjZiNWI3NmJhNSIsInVzZXJfaWQiOiJiNDY3MGNmMS0wMDA1LTQyY2EtYjJmMy1hNTEzMTM3ZmJhYWQifQ.of4PJuz2flh8oZMERyMNJCNFX73gQ8REY6vlLLI7YNk",
+							"value": "{{user_token}}",
 							"type": "string"
 						}
 					]
@@ -610,7 +621,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"product\": [\r\n        \"1388b2b6-8567-4ea1-9301-8e4e07319caf\",\r\n        \"246310b6-9fd8-4700-a631-2f2db421b709\"\r\n    ]\r\n}",
+					"raw": "{\r\n    \"product\": [\"87083907-3319-464f-9ad8-2bae955e43b1\"\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -618,7 +629,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/buyer/cart/8014d465-768f-4520-bed2-ee388bee3070",
+					"raw": "http://127.0.0.1:8000/buyer/cart/4c908cd8-2864-4b14-8a78-6431faf071d6",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -630,7 +641,7 @@
 					"path": [
 						"buyer",
 						"cart",
-						"8014d465-768f-4520-bed2-ee388bee3070"
+						"4c908cd8-2864-4b14-8a78-6431faf071d6"
 					]
 				},
 				"description": "Update cart by card_id\r\nIf cart is created by authenticated user then only that user can update the cart"
@@ -645,7 +656,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2NDQxNDQ5LCJqdGkiOiIxMGFhMDA1OTgxMjI0NGRjODA1NjI4YzViZWUyZDY4MiIsInVzZXJfaWQiOiIxM2M5MTMyOS0xMzhmLTQ4YWYtODQwNC1hMzkxNGI5MzdhOWQifQ.4f9lTez01R-P9pvRDJaPXA3n2pNWeLVEham9LgVvSR0",
+							"value": "{{user_token}}",
 							"type": "string"
 						}
 					]
@@ -653,7 +664,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/buyer/cart/c7a0d2db-3ad6-431f-a891-407224ecb117/order",
+					"raw": "http://127.0.0.1:8000/buyer/cart/4c908cd8-2864-4b14-8a78-6431faf071d6/order",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -665,12 +676,100 @@
 					"path": [
 						"buyer",
 						"cart",
-						"c7a0d2db-3ad6-431f-a891-407224ecb117",
+						"4c908cd8-2864-4b14-8a78-6431faf071d6",
 						"order"
 					]
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Self: Update address",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{user_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\": \"Golibar Maidan, Satara\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/seller/self",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"seller",
+						"self"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order: Get Order of Store by type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{user_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/store/a2265cbf-c709-4b6b-9e82-8a8c9d0bc7d5/order?status=Submitted",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"store",
+						"a2265cbf-c709-4b6b-9e82-8a8c9d0bc7d5",
+						"order"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "Submitted"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "user_token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2NDgxNzM2LCJqdGkiOiJiMjhlOTllOWE2ZmQ0MTFjODNhYjBiOTVlYjQ4ZDRkOCIsInVzZXJfaWQiOiIxM2M5MTMyOS0xMzhmLTQ4YWYtODQwNC1hMzkxNGI5MzdhOWQifQ.tmkMqjTwxGW72VjO40bo_V7GAZq3hIJZPyWCOx93Q4Y"
 		}
 	]
 }

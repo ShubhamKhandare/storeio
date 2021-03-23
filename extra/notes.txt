@@ -1,4 +1,0 @@
-# Pending:
-#    1. Add option to update address of current user
-#    2. Do not allow placing of order if user address does not exist
-#    3. Filter order by status in get order
