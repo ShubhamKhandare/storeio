@@ -29,7 +29,8 @@ class StoreListCreateView(ListCreateAPIView):
     def create(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
-            store_link = settings.DOMAIN_NAME + urllib.parse.quote_plus(str(serializer.validated_data['store_name']))
+            store_link = settings.DOMAIN_NAME + 'store/' + urllib.parse.quote_plus(
+                str(serializer.validated_data['store_name']))
             try:
                 serializer.save(seller=request.user, store_link=store_link)
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -42,6 +43,15 @@ class StoreListCreateView(ListCreateAPIView):
 class StoreRetrieveView(RetrieveAPIView):
     queryset = Store.objects.all()
     serializer_class = StoreListCreateSerializer
+    lookup_field = 'store_name'
+
+    def get_object(self):
+        queryset = self.filter_queryset(self.get_queryset())
+        lookup_url_kwarg = self.lookup_url_kwarg or self.lookup_field
+        filter_kwargs = {self.lookup_field: urllib.parse.unquote_plus(str(self.kwargs[lookup_url_kwarg]))}
+        obj = get_object_or_404(queryset, **filter_kwargs)
+        self.check_object_permissions(self.request, obj)
+        return obj
 
 
 class ProductListCreateView(ListCreateAPIView):
